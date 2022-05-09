@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class BeerEntity {
 
-    private long id;
+    private final long id;
     private String name;
     private double price;
     private double rating;
@@ -20,36 +20,28 @@ public class BeerEntity {
         return id;
     }
 
-    public BeerEntity setId(long id) {
-        this.id = id;
-        return this;
-    }
-
     public String getName() {
         return name;
     }
 
-    public BeerEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public BeerEntity setPrice(double price) {
+    public void setPrice(double price) {
         this.price = price;
-        return this;
     }
 
     public double getRating() {
         return rating;
     }
 
-    public BeerEntity setRating(double rating) {
+    public void setRating(double rating) {
         this.rating = rating;
-        return this;
     }
 
     @Override

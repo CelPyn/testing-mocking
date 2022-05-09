@@ -22,7 +22,7 @@ public class BeerService {
         return beer;
     }
 
-    public boolean deleteBeer(int id) {
+    public boolean deleteBeer(long id) {
         return false;
     }
 
