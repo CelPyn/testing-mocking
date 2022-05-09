@@ -3,6 +3,7 @@ package com.axxes.testing.mocking;
 import com.axxes.testing.mocking.exception.BeerNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Database {
 
@@ -10,7 +11,7 @@ public interface Database {
 
     void update(BeerEntity beerEntity);
 
-    BeerEntity findById(long id);
+    Optional<BeerEntity> findById(long id);
 
     List<BeerEntity> getAll();
 
