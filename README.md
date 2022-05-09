@@ -20,6 +20,9 @@ You should assert that:
 - The `getAll` method was called.
 - The result of the method is equal to what you mocked the database to return.
 
+Extra:
+Bonus points if you use a stream with a map operation to transform all the `BeerEntities` to `Beer` instances
+
 ### 2) `createBeer`
 
 `createBeer`, as the name implies, persists a new beer in the `Database`.
@@ -35,11 +38,11 @@ Write a second test where the database throws a `BeerAlreadyExistsException` and
 
 First, complete the implementation. You will want to look up any potential already existing beer for the id and check if there are differences.
 
-To save resources, you wouldn't want to call an update method if it's not needed.
+To save resources, you wouldn't want to update a field if it's not needed.
 
 Next up, test the implementation. Make sure to test these cases:
 - Updating a non-existing beer should throw a Runtime(!) exception.
-- Updating a beer which does not have changes for a certain field should have no interaction with said update method.
+- Updating a beer which does not have changes for a certain field should have no interaction with the setter in the `BeerEntity`.
 
 ### 4) `deleteBeer`
 
