@@ -75,9 +75,9 @@ public class BeerService {
     /**
      * Not using Optional::Map is also an acceptable solution.
      *
-     * @see BeerService#deleteBeerImperative(int)
+     * @see BeerService#deleteBeerImperative(long)
      */
-    public boolean deleteBeer(int id) {
+    public boolean deleteBeer(long id) {
         Optional<BeerEntity> entity = database.findById(id);
         entity.map(BeerEntity::getId)
                 .ifPresent(database::delete);
@@ -87,7 +87,7 @@ public class BeerService {
     /**
      * Alternative method of deleting a beer.
      */
-    public boolean deleteBeerImperative(int id) {
+    public boolean deleteBeerImperative(long id) {
         Optional<BeerEntity> entity = database.findById(id);
         if (entity.isPresent()) {
             BeerEntity beerEntity = entity.get();
