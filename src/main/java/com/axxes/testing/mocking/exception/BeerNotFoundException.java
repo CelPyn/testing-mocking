@@ -1,6 +1,6 @@
 package com.axxes.testing.mocking.exception;
 
-public class BeerNotFoundException extends Exception {
+public class BeerNotFoundException extends RuntimeException {
 
     private final long id;
 

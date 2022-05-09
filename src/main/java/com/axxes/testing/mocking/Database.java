@@ -6,18 +6,14 @@ import java.util.List;
 
 public interface Database {
 
-    Beer create(Beer beer);
+    BeerEntity create(BeerEntity beerEntity);
 
-    void updatePrice(long id, double price) throws BeerNotFoundException;
+    void update(BeerEntity beerEntity);
 
-    void updateName(long id, String name) throws BeerNotFoundException;
+    BeerEntity findById(long id);
 
-    void updateRating(long id, double rating) throws BeerNotFoundException;
+    List<BeerEntity> getAll();
 
-    Beer findById(long id) throws BeerNotFoundException;
-
-    List<Beer> getAll();
-
-    void delete(long id) throws BeerNotFoundException;
+    void delete(long id);
 
 }
