@@ -1,6 +1,7 @@
 package com.axxes.testing.mocking;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class BeerServiceTest {
 
