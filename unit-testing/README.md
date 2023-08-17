@@ -1,4 +1,4 @@
-# Unit testing
+# Unit Testing
 ## Context
 In this project you can find a `BeerService` which has a dependency on a `Database`.
 
