@@ -2,6 +2,8 @@
 
 This repository contains slides and exercises for the mocking and testing session of the Axxes traineeship.
 
+[Slides can be found here.](./slides.pdf)
+
 ## Building the project
 Make sure you have configured JDK 17 as the JDK for this project.
 
