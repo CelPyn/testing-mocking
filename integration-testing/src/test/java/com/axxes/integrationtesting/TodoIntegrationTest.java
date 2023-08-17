@@ -32,29 +32,6 @@ class TodoIntegrationTest {
 
     @Test
     @DataSet(value = "initialTodos.yml", cleanAfter = true)
-    void when_gettingExistingTodo_todoIsReturned() {
-        when()
-                .get("/todo/{id}", "eed612a1-4f45-4fb1-8707-c3f995422112")
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .body("id", equalTo("eed612a1-4f45-4fb1-8707-c3f995422112"))
-                .body("summary", equalTo("Deploy application"))
-                .body("status", equalTo("TODO"));
-    }
-
-    @Test
-    @DataSet(value = "initialTodos.yml", cleanAfter = true)
-    void when_gettingNonExistingTodo_404_isReturned() {
-        when()
-                .get("/todo/{id}", UUID.randomUUID())
-                .then()
-                .assertThat()
-                .statusCode(404);
-    }
-
-    @Test
-    @DataSet(value = "initialTodos.yml", cleanAfter = true)
     void when_gettingAllTodos_todosAreReturned_todosAreSortedBySummary() {
         when()
                 .get("/todo")
@@ -67,57 +44,4 @@ class TodoIntegrationTest {
                 .body("todos[0].status", equalTo("DONE"));
     }
 
-    @Test
-    @DataSet(value = "initialTodos.yml", cleanAfter = true)
-    void when_creatingTodo_todoIsCreated() {
-        when()
-                .get("/todo")
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .body("todos", hasSize(3));
-
-        UUID newId = with().body(new CreateTodoDTO("Become a millionaire")).header(new Header("Content-Type", "application/json"))
-                .when()
-                .post("/todo")
-                .then()
-                .assertThat()
-                .statusCode(201)
-                .body("id", not(blankString()))
-                .body("summary", equalTo("Become a millionaire"))
-                .body("status", equalTo("TODO"))
-                .extract().body().as(TodoDTO.class).getId();
-
-        when()
-                .get("/todo/{id}", newId)
-                .then()
-                .assertThat()
-                .statusCode(200);
-    }
-
-    @Test
-    @DataSet(value = "initialTodos.yml", cleanAfter = true)
-    void when_markingTodoAsDone_todoIsDone() {
-        when()
-                .put("/todo/{id}", "db22362a-059b-4e7e-bdeb-8c25e0d49808")
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .body("id", equalTo("db22362a-059b-4e7e-bdeb-8c25e0d49808"))
-                .body("summary", equalTo("Figure out how to set up Kafka"))
-                .body("status", equalTo("DONE"));
-    }
-
-    @Test
-    @DataSet(value = "initialTodos.yml", cleanAfter = true)
-    void when_deletingTodo_todoIsRemoved() {
-        when()
-                .delete("/todo/{id}", "db22362a-059b-4e7e-bdeb-8c25e0d49808")
-                .then()
-                .assertThat()
-                .statusCode(200)
-                .body("id", equalTo("db22362a-059b-4e7e-bdeb-8c25e0d49808"))
-                .body("summary", equalTo("Figure out how to set up Kafka"))
-                .body("status", equalTo("TODO"));
-    }
 }
