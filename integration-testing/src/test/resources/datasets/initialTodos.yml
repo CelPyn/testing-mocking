@@ -1,0 +1,10 @@
+TODOS:
+  - ID: db22362a-059b-4e7e-bdeb-8c25e0d49808
+    SUMMARY: "Figure out how to set up Kafka"
+    STATUS: "TODO"
+  - ID: f6fee134-d09c-42af-9a12-640d3a1ca88a
+    SUMMARY: "Add unit tests"
+    STATUS: "DONE"
+  - ID: eed612a1-4f45-4fb1-8707-c3f995422112
+    SUMMARY: "Deploy application"
+    STATUS: "TODO"
