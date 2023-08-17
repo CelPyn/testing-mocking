@@ -27,7 +27,7 @@ Refer to the [README](./unit-testing/README.md) of this module for more info.
 ### Test Driven Development
 For this module, the consultant that's teaching the session will guide you. You're not getting any hints here ;) 
 
-###
+### Integration Testing
 This module contains exercises that focus on integration testing.
 
 Refer to the [README](./integration-testing/README.md) of this module for more info.
