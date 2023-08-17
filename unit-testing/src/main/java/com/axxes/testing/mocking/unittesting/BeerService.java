@@ -16,85 +16,21 @@ public class BeerService {
         this.database = database;
     }
 
-    /**
-     * Not using Stream and Stream::map is also an acceptable solution.
-     *
-     * @see BeerService#getAllBeersImperative()
-     */
+
     public List<Beer> getAllBeers() {
-        return database.getAll()
-                .stream()
-                .map(this::map)
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * Alternative method of getting all beers.
-     */
-    public List<Beer> getAllBeersImperative() {
-        List<BeerEntity> allEntities = database.getAll();
-
-        List<Beer> beers = new ArrayList<>(allEntities.size());
-        for (BeerEntity entity : allEntities) {
-            Beer beer = map(entity);
-            beers.add(beer);
-        }
-        return beers;
+        return List.of();
     }
 
     public Beer createBeer(Beer beer) {
-        Optional<BeerEntity> optionalBeer = database.findById(beer.getId());
-        if (optionalBeer.isPresent()) {
-            throw new BeerAlreadyExistsException(beer);
-        }
-        BeerEntity beerEntity = map(beer);
-        database.create(beerEntity);
-        return beer;
+        return null;
     }
 
     public Beer updateBeer(Beer beer) {
-        Optional<BeerEntity> optionalBeer = database.findById(beer.getId());
-
-        BeerEntity entity = optionalBeer.orElseThrow(() -> new BeerNotFoundException(beer.getId()));
-
-        if (!beer.getName().equals(entity.getName())) {
-            entity.setName(beer.getName());
-        }
-        if (beer.getPrice() != entity.getPrice()) {
-            entity.setPrice(beer.getPrice());
-        }
-        if (beer.getRating() != entity.getRating()) {
-            entity.setRating(beer.getRating());
-        }
-
-        database.update(entity);
-
-        return beer;
+        return null;
     }
 
-    /**
-     * Not using Optional::Map is also an acceptable solution.
-     *
-     * @see BeerService#deleteBeerImperative(long)
-     */
     public boolean deleteBeer(long id) {
-        Optional<BeerEntity> entity = database.findById(id);
-        entity.map(BeerEntity::getId)
-                .ifPresent(database::delete);
-        return entity.isPresent();
-    }
-
-    /**
-     * Alternative method of deleting a beer.
-     */
-    public boolean deleteBeerImperative(long id) {
-        Optional<BeerEntity> entity = database.findById(id);
-        if (entity.isPresent()) {
-            BeerEntity beerEntity = entity.get();
-            database.delete(beerEntity.getId());
-            return true;
-        }
-        return false;
+        return true;
     }
 
     private Beer map(BeerEntity entity) {
